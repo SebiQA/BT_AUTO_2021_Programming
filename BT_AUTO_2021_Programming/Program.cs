@@ -9,6 +9,7 @@ namespace BT_AUTO_2021_Programming
             Console.WriteLine("Hello World!");
             Console.WriteLine("Ana are pere nu si mere");
             Console.WriteLine(5 + 2);
+            Console.WriteLine("5+2");
         }
     }
 }

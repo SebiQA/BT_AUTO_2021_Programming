@@ -2,7 +2,7 @@
   "profiles": {
     "BT_AUTO_2021_Programming": {
       "commandName": "Project",
-      "commandLineArgs": "abc 123 ana are mere"
+      "commandLineArgs": "2 * 3"
     }
   }
 }

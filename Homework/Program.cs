@@ -7,7 +7,7 @@ namespace Homework
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello Professor!");
 
 
             if (args.Length == 3)

@@ -17,7 +17,7 @@ namespace Sum_100
                 i++;
             }
 
-            Console.WriteLine("Suma primelor 100 numere naturale > 0 este " + sum);
+            Console.WriteLine("Sum of the first 100 natural numbers is " + sum);
                 
         }
     }

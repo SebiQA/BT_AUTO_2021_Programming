@@ -21,12 +21,14 @@ namespace Homework
 
                 float result;
 
+
+
                 switch (op)
                 {
                     case "*":
                         {
                             result = a * b;
-                            Console.WriteLine("Result i s" + result);
+                            Console.WriteLine("Result is " + result);
                             break;
                         }
 

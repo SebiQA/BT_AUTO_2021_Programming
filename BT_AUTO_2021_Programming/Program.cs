@@ -8,7 +8,8 @@ namespace BT_AUTO_2021_Programming
        {
             //Course01(args);
             //Course02(args);
-            Course03(args);
+            //Course03(args);
+            Course04();
        }
 
        static void Course01(string[] args)
@@ -293,6 +294,107 @@ namespace BT_AUTO_2021_Programming
             //Console.WriteLine(ConcatenateString(args));
             GuessNumber(678);
        }
+       static void Course04()
+       {
+            DrawFullShape(5, 3);
+            Console.WriteLine();
+            DrawShapeOutline(10, 4);
+            Console.WriteLine();
+            DrawShapeCorners(5, 5);
+
+            Circle c1 = new Circle();   //instantiate c1 with default (no parameters) constructor
+            Circle c2 = new Circle(10); //instantiate c2 with parameter constructor
+            c1.PrintCircle();
+            c2.PrintCircle();
+
+            Person p1 = new Person();
+            Person p2 = new Person("Seb", 'm', new string[] { "Dac" }, false, new DateTime());
+            p1.PrintPerson();
+            p2.PrintPerson();
+
+            Rectangle r1 = new Rectangle(2, 7);
+            r1.PrintRectangle();
+
+            Square s1 = new Square(4);
+            s1.PrintSquare();
+
+            Struct_example se = new Struct_example();
+            Struct_example.MyStruct myStruct = new Struct_example.MyStruct();
+            myStruct.Assign(10, "abc");
+            Console.WriteLine(myStruct.ComputeSum());
+
+       }
+
+        public static void DrawShapeCorners(int width, int heigth)
+        {
+
+            for (int j = 0; j < heigth; j++)
+            {
+                for (int i = 0; i < width; i++) // this will print a single line with * counting width
+                {
+                    if(j==0 || j==heigth-1) 
+                    {
+                        if (i==0 || i==width-1)
+                        {
+                            Console.Write("*");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static void DrawShapeOutline(int width, int heigth)
+        {
+            for (int j = 0; j < heigth; j++)
+            {
+                for (int i = 0; i < width; i++)
+                {
+                    if (j == 0 || j == heigth - 1)
+                    {
+                        Console.Write("*");
+                    }
+
+                    else
+                    {
+                        if ( i == 0 || i == width - 1)
+                        {
+                            Console.Write("*");
+                        }
+
+                        else
+                        {
+                            Console.Write("");
+                        }
+                    }
+                    
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        public static void DrawFullShape(int width, int heigth)
+        {
+
+            for (int j = 0; j < heigth; j++)
+            {
+                for (int i = 0; i < width; i++) // this will print a single line with * counting width
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+        }
 
         static int TestValue(int testVal, int target)
         {
@@ -322,15 +424,13 @@ namespace BT_AUTO_2021_Programming
             while (TestValue(currentNumber, n) != 0);
         }
 
-       static bool IssOddNumber(int number)
+        static bool IssOddNumber(int number)
        {
             
             {
                 return number % 2 != 0;
             }
        }
-
-       
 
         static void ComputeConversion(string[] args)
         {
@@ -372,7 +472,6 @@ namespace BT_AUTO_2021_Programming
             return returnString;
         }
 
-       
 
     }
 }

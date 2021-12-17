@@ -298,7 +298,7 @@ namespace BT_AUTO_2021_Programming
        {
             DrawFullShape(5, 3);
             Console.WriteLine();
-            DrawShapeOutline(10, 4);
+            DrawShapeOutline(8, 8 );
             Console.WriteLine();
             DrawShapeCorners(5, 5);
 
@@ -323,6 +323,9 @@ namespace BT_AUTO_2021_Programming
             myStruct.Assign(10, "abc");
             Console.WriteLine(myStruct.ComputeSum());
 
+            Struct_example.Rectangle3D r2 = new Struct_example.Rectangle3D();
+            r2.Assign(2, 5, 7);
+            Console.WriteLine(r2.GetVolume());
        }
 
         public static void DrawShapeCorners(int width, int heigth)
@@ -373,7 +376,7 @@ namespace BT_AUTO_2021_Programming
 
                         else
                         {
-                            Console.Write("");
+                            Console.Write(" ");
                         }
                     }
                     

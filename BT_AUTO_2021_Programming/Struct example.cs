@@ -48,7 +48,7 @@ namespace BT_AUTO_2021_Programming
 
             public double GetArea()
             {
-                return 2 * (L * l + l * h + L * h);
+                return 4 * L * h + 2 * L * l;
             }
 
             public double GetVolume()

@@ -8,7 +8,9 @@ namespace Display_prime_numbers
         {
             Console.WriteLine("Hello Professor!");
 
-            int limita = 40;
+            int limita;
+            Console.Write("Display the prime numbers until: ");
+            limita = int.Parse(Console.ReadLine());
             int no;
             int i;
             int count;

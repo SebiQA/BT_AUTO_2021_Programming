@@ -9,9 +9,39 @@ namespace BT_AUTO_2021_Programming
             //Course01(args);
             //Course02(args);
             //Course03(args);
-            Course04();
+            //Course04();
+            Course05();
        }
 
+        static void Course05()
+        {
+            DrawShapeOutline(5);
+            DrawShapeOutline(10, 5);
+            DrawShapeCorners(6);
+            DrawFullShape(7);
+
+            Circle c = new Circle(4);
+            Object O = new Object();
+            c.Draw();
+            Triangle t1 = new Triangle(5, 7, 9);
+            t1.Draw();
+            Square s1 = new Square(5);
+            Rectangle r1 = new Rectangle(2, 7);
+            Console.WriteLine(s1.GetArea());
+            Console.WriteLine(r1.GetArea());
+            Console.WriteLine(c.ToString());
+            Console.WriteLine(s1.ToString());
+            Console.WriteLine(r1.ToString());
+            Console.WriteLine(t1.ToString());
+
+            Teacher teacher1 = new Teacher("Programing", "UBB", 2000, "Gigel Programatoru", 'm');
+            teacher1.PrintTeacher();
+
+            Student student1 = new Student("AN 1", true, true, "Seb F", 'm');
+            student1.PrintStudent();
+
+
+        }
        static void Course01(string[] args)
         {
             
@@ -295,6 +325,8 @@ namespace BT_AUTO_2021_Programming
             GuessNumber(678);
        }
        static void Course04()
+
+
        {
             DrawFullShape(5, 3);
             Console.WriteLine();
@@ -384,6 +416,21 @@ namespace BT_AUTO_2021_Programming
                 Console.WriteLine();
             }
 
+        }
+
+        public static void DrawShapeOutline(int l)
+        {
+            DrawShapeOutline(l, l);
+        }
+
+        public static void DrawShapeCorners(int l)
+        {
+            DrawShapeCorners(l, l);
+        }
+
+        public static void DrawFullShape(int l)
+        {
+            DrawFullShape(l, l);
         }
 
         public static void DrawFullShape(int width, int heigth)

@@ -18,8 +18,7 @@ namespace BT_AUTO_2021_Programming
             this.hasDormRoom = hasDormRoom;
             this.SetName(name);
             this.SetSex(sex);
-            
-            
+
         }
 
         public Student ()

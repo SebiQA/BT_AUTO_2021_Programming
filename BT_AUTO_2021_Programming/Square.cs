@@ -6,7 +6,7 @@ namespace BT_AUTO_2021_Programming
 {
     class Square : Rectangle
     {
-        double side;
+        public double side;
 
         public Square(double side)
         {
@@ -15,6 +15,7 @@ namespace BT_AUTO_2021_Programming
 
         public Square()
         {
+
         }
 
 

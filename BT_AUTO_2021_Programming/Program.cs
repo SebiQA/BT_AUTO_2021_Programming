@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System.Collections.Generic;
+
 namespace BT_AUTO_2021_Programming
 {
     class Program
@@ -11,7 +13,9 @@ namespace BT_AUTO_2021_Programming
             //Course03(args);
             //Course04();
             //Course05();
-            Course06();
+            //Course06();
+            Course07();
+
        }
 
         private static void Course06()
@@ -392,6 +396,68 @@ namespace BT_AUTO_2021_Programming
             r2.Assign(2, 5, 7);
             Console.WriteLine(r2.GetVolume());
        }
+
+        private static void Course07()
+        {
+            Square s1 = new Square();
+            Rectangle r1 = new Rectangle();
+            Shape sh1 = new Shape();
+
+            // polymorphism
+            IShape s2 = new Square();
+            IShape r2 = new Rectangle();
+            IShape sh2 = new Shape();
+
+            List<string> lista = new List<string>();
+            List<IShape> shapeList = new List<IShape>();
+            shapeList.Add(s2);
+            shapeList.Add(r2);
+            shapeList.Add(sh2);
+            shapeList.Add(s1);
+
+            s1.Draw();
+            s2.Draw();
+            s2.State();
+            ((AbstractShape)s2).DoSomething();
+
+            s1.PrintSquare();
+            ((Square)s2).PrintSquare();
+
+            // example of using polymorphism
+            Shape sh3;
+            string type = "square";
+
+            switch (type)
+            {
+                case "square":
+                    {
+                        sh3 = new Square();
+                        break;
+                    }
+                case "rectangle":
+                    {
+                        sh3 = new Rectangle();
+                        break;
+                    }
+                default:
+                    {
+                        sh3 = new Shape();
+                        break;
+                    }
+            }
+            sh3.Draw();
+            sh3.Erase();
+
+            IIntf ob1 = new MyParticularShape();
+            IClass ob2 = new MyParticularShape();
+            ob1.Print();
+            ob2.Print();
+
+            PartialClass pc = new PartialClass();
+            pc.Method1();
+            pc.Method2();
+
+        }
 
         public static void DrawShapeCorners(int width, int heigth)
         {

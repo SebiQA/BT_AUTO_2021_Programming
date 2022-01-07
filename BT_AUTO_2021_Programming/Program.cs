@@ -1,11 +1,17 @@
 ﻿using System;
-
+using System.Collections;
 using System.Collections.Generic;
 
 namespace BT_AUTO_2021_Programming
 {
     class Program
     {
+        public enum Browsers
+        {
+            Chrome,
+            Firefox,
+            Edge
+        }
        static void Main(string[] args)
        {
             //Course01(args);
@@ -14,9 +20,120 @@ namespace BT_AUTO_2021_Programming
             //Course04();
             //Course05();
             //Course06();
-            Course07();
+            //Course07();
+            Course08();
 
        }
+
+        private static void Course08()
+        {
+            Person p = new Person("Ionel", "Ionescu", "str.Margelelor", "Vartop", "Ro");
+            Employee e = new Employee("Makaducu", "Makao", "-", "Antananrivo", "Madagascar", 1500);
+            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "str. unirii", "Iasi", "Ro", 1000);
+            
+            //metodele non-statice au nevoie de un new p, e, etc.
+            Person.PrintPersonStatic(p);
+            Employee.PrintPersonStatic(e);
+            PartTimeEmployee.PrintPersonStatic(pe);
+
+            //cele statice nu au nevoie
+            p.PrintPerson();
+
+
+            int[] intArray = new int[5] { 1, 2, 3, 4, 5 };
+            Shape s1 = new Shape();
+            Rectangle r1 = new Rectangle();
+            Shape[] shapes = new Shape[2] { s1, r1 };
+
+            foreach (int x in intArray)
+            {
+                Console.WriteLine(x);
+            }
+            for (int i=0; i<intArray.Length; i++)
+            {
+                Console.WriteLine(intArray[i]);
+            }
+
+            List<string> myList = new List<string>();
+            myList.Add("Seb");
+            myList.Add("Teo");
+            myList.Add("Ovi");
+
+            Console.WriteLine(myList.IndexOf("Seb"));
+            Console.WriteLine(myList[0]);
+
+            foreach (string s in myList)
+            {
+                Console.WriteLine(s);
+            }
+            for (int i=0; i<myList.Count; i++)
+            {
+                Console.WriteLine(myList[i]);
+            }
+
+            String stringDemo = "ana are mere"; // a:3, n:1, r:2, e:3, m:1
+            Dictionary<char, int> charactersFreq = new Dictionary<char, int>();
+            foreach(char c in stringDemo) // ia caracterele pe rand a, n, a, _, etc...
+            {
+                if (charactersFreq.ContainsKey(c))
+                {
+                    charactersFreq[c] = charactersFreq[c] + 1;
+                }
+                else
+                {
+                    charactersFreq.Add(c, 1);
+                }
+                
+            }
+
+            foreach (char key in charactersFreq.Keys)
+            {
+                Console.WriteLine("{0}:{1}", key, charactersFreq[key]);
+            }
+
+            foreach (KeyValuePair<char, int> kvp in charactersFreq)
+            {
+                Console.WriteLine("{0}:{1}", kvp.Key, kvp.Value);
+            }
+
+            //SortedList<int, string> listSorted = new SortedList<int, string>(); =
+            var listSorted = new SortedList<int, string>();
+            listSorted.Add(6, "abc");
+            listSorted.Add(10, "abcd");
+            listSorted.Add(1, "xyz");
+
+            foreach (int key in listSorted.Keys)
+            {
+                Console.WriteLine("{0}:{1}", key, listSorted[key]);
+            }
+
+            //HashSet<int> hs = new HashSet<int>(intArray); =
+            var hs = new HashSet<int>(intArray);
+            hs.Add(1);
+
+            foreach (int i in hs)
+            {
+                Console.WriteLine(i);
+            }
+
+            var myQueue = new Queue<int>();
+            myQueue.Enqueue(2);
+            myQueue.Enqueue(3);
+            myQueue.Enqueue(100);
+            myQueue.Enqueue(1);
+            int value = myQueue.Dequeue();
+            Console.WriteLine("Queue elements: {0}", myQueue.Count);
+
+            var myStack = new Stack<int>();
+            myStack.Push(2);
+            myStack.Push(3);
+            myStack.Push(100);
+            myStack.Push(1);
+            int stackVal = myStack.Pop(); //return 1
+            Console.WriteLine("Stack elements: {0}", myStack.Count);
+
+            Console.WriteLine(Browsers.Firefox);
+        }
 
         private static void Course06()
         {

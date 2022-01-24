@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,42 @@ namespace NUnit_Auto_2022
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            // Chrome opitons
+            var options = new ChromeOptions();
+            //var options = new FirefoxOptions();
+            //options.AddArgument("--start-maximized"); 
+            //options.AddArgument("headless");
+            options.AddArgument("ignore-certificate-errors");
+
+            var proxy = new Proxy();
+            proxy.HttpProxy = "127.0.0.1:8080";
+            proxy.IsAutoDetect = false;
+            //options.Proxy = proxy;
+            //options.AddExtension("C:\\Users\\Sebastian\\Downloads\\extension_4_42_0_0.crx");
+
+            var firefoxOptions = new FirefoxOptions();
+            string[] optionList = 
+            { 
+                //"--headless",
+                "--ignore-certificate-errors",
+                "--no-sandbox",
+                "--disable-ogu"
+            };
+            firefoxOptions.AddArguments(optionList);
+            FirefoxProfile fProfile = new FirefoxProfile();
+            fProfile.AddExtension("C:\\Users\\Sebastian\\Downloads\\metamask-10.8.1-an+fx.xpi");
+            firefoxOptions.Profile = fProfile;
+           
+
+            var edgeOptions = new EdgeOptions();
+            //edgeOptions.AddExtension("C:\\Users\\Sebastian\\Downloads\\extension_4_42_0_0.crx");
+            edgeOptions.AddArguments("args", "['start-maximized', 'headless']");
+            edgeOptions.AddArgument("headless");
+
+           driver = new ChromeDriver(options);
+           //driver = new FirefoxDriver(firefoxOptions);
+           driver.Manage().Window.Maximize();
+
         }
 
         [TestCase("dinosaur", "dinosaurpassword", "", "")]
@@ -117,6 +154,53 @@ namespace NUnit_Auto_2022
             element.Click();
         }
 
+        [Test]
+        public void Test06()
+        {
+            driver.Navigate().GoToUrl("https://magazinulcolectionarului.ro/");
+
+            var cookies = driver.Manage().Cookies;
+            Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+            Utils.PrintCookies(cookies);
+            Cookie myCookie = new Cookie("myCookie", "vineoaiapapalupu");
+            cookies.AddCookie(myCookie);
+            Utils.PrintCookies(cookies);
+
+            var ck = cookies.GetCookieNamed("PHPSESSID");
+            Console.WriteLine("Cookie name {0} and value {1}", ck.Name, ck.Value);
+
+
+            cookies.DeleteAllCookies();
+            Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+
+            Utils.TakeScreenshotWithDate(driver, "C:\\Temp", "screenshot", ScreenshotImageFormat.Png);
+
+        }
+
+        [Test]
+        public void Test07()
+        {
+            driver.Navigate().GoToUrl("http://86.121.249.150:4999/#/alert");
+            var alertButton = driver.FindElement(By.Id("alert-trigger"));
+            var confirmButton = driver.FindElement(By.Id("confirm-trigger"));
+            var promptButton = driver.FindElement(By.Id("prompt-trigger"));
+
+            alertButton.Click();
+            IAlert alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.Accept();
+
+            confirmButton.Click();
+            alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.Dismiss();
+
+            promptButton.Click();
+            alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.SendKeys("alex");
+            alert.Accept();
+        }
 
         [TearDown]
         public void TearDown()

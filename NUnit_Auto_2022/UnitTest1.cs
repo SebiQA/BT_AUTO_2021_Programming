@@ -5,7 +5,7 @@ namespace NUnit_Auto_2022
 {
     [TestFixture(15,35)]
     [TestFixture(25, 22)]
-    public class Tests
+    public class OldTests
     {
         int x;
         int y;
@@ -16,7 +16,7 @@ namespace NUnit_Auto_2022
             TestContext.Out.WriteLine("Stii ce ;), this method runs only once for all tests");
         }
 
-        public Tests(int x, int y)
+        public OldTests(int x, int y)
         {
             this.x = x;
             this.y = y;

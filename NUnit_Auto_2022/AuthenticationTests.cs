@@ -156,7 +156,7 @@ namespace NUnit_Auto_2022
             element.Click();
         }
 
-        [Test]
+        /*[Test]
         public void Test06()
         {
             driver.Navigate().GoToUrl("https://magazinulcolectionarului.ro/");
@@ -164,7 +164,7 @@ namespace NUnit_Auto_2022
             var cookies = driver.Manage().Cookies;
             Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
             Utils.PrintCookies(cookies);
-            Cookie myCookie = new Cookie("myCookie", "vineoaiapapalupu");
+            Coookie myCookie = new Cookie("myCookie", "vineoaiapapalupu");
             cookies.AddCookie(myCookie);
             Utils.PrintCookies(cookies);
 
@@ -177,7 +177,7 @@ namespace NUnit_Auto_2022
 
             Utils.TakeScreenshotWithDate(driver, "C:\\Temp", "screenshot", ScreenshotImageFormat.Png);
 
-        }
+        }*/
 
         [Test]
         public void Test07()

@@ -18,8 +18,4 @@
     <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="97.0.1072.55" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Page models\PageFactory\" />
-  </ItemGroup>
-
 </Project>

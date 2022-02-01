@@ -9,15 +9,10 @@ using System.Collections.Generic;
 using System.Text;
 namespace NUnit_Auto_2022.Tests
 {
-    class AuthTest
+    class AuthTest : BaseTest
     {
-        IWebDriver driver;
+
         string url = FrameworkConstants.GetUrl();
-        [SetUp]
-        public void Setup()
-        {
-            driver = new ChromeDriver();
-        }
 
         // Test auth with Page Object model
         [Test]
@@ -40,10 +35,6 @@ namespace NUnit_Auto_2022.Tests
             Assert.AreEqual("Authentication", lp.CheckPage());
             lp.Login("user1", "pass1");
         }
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-        }
+
     }
 }

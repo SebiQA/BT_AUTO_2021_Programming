@@ -1,11 +1,12 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit_Auto_2022.Page_models.POM;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NUnit_Auto_2022.PageModels.POM
 {
-    class LoginPage
+    class LoginPage : BasePage
     {
 
         const string authPageText = "text-muted"; // class
@@ -17,11 +18,8 @@ namespace NUnit_Auto_2022.PageModels.POM
         const string passwordError = "#login-form > div.form-group.row.row-cols-lg-true > div > div > div.text-left.invalid-feedback"; // css
         const string submitButton = "btn-primary"; // class
 
-        IWebDriver driver;
-
-        public LoginPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
         }
 
         public string CheckPage()

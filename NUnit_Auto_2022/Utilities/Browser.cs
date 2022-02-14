@@ -11,12 +11,12 @@ namespace NUnit_Auto_2022.Utilities
     public class Browser
     {
 
-        public static IWebDriver GetDriver(webBrowsers browserType)
+        public static IWebDriver GetDriver(WebBrowsers browserType)
         {
             switch (browserType) 
             {
                 // Instantiate a chrome driver
-                case webBrowsers.Chrome:
+                case WebBrowsers.Chrome:
                     {
                         var options = new ChromeOptions();
                         //options for the driver based on flags from FrameWorkConstants
@@ -29,7 +29,7 @@ namespace NUnit_Auto_2022.Utilities
                         {
                             options.AddArgument("headless");
                         }
-                        if (FrameworkConstants.ignoreCerterr)
+                        if (FrameworkConstants.ignoreCertErr)
                         {
                             options.AddArgument("ignore-certificate-errors");
                         }
@@ -46,7 +46,7 @@ namespace NUnit_Auto_2022.Utilities
                         //initiate chrome driver with options
                         return new ChromeDriver(options);
                     }
-                case webBrowsers.Firefox:
+                case WebBrowsers.Firefox:
                     {
                         //options for the driver based on flags from FrameWorkConstants
                         var firefoxOptions = new FirefoxOptions();
@@ -55,7 +55,7 @@ namespace NUnit_Auto_2022.Utilities
                         {
                             optionList.Add("--headless");
                         }
-                        if (FrameworkConstants.ignoreCerterr) 
+                        if (FrameworkConstants.ignoreCertErr) 
                         {
                             optionList.Add("--ignore-certificate-errors");
                         }
@@ -73,7 +73,7 @@ namespace NUnit_Auto_2022.Utilities
                         //initiate the Firefox driver with options
                         return new FirefoxDriver(firefoxOptions);
                     }
-                case webBrowsers.Edge:
+                case WebBrowsers.Edge:
                     {
 
                         var edgeOptions = new EdgeOptions();
@@ -102,13 +102,44 @@ namespace NUnit_Auto_2022.Utilities
             }
         }
 
+        // This method will provide a driver, based on the config file browser attribute
+        public static IWebDriver GetDriver()
+        {
+            WebBrowsers cfgBrowser;
+            switch (FrameworkConstants.configBrowser.ToUpper())
+            {
+                case "FIREFOX":
+                    {
+                        cfgBrowser = WebBrowsers.Firefox;
+                        break;
+                    }
+                case "CHROME":
+                    {
+                        cfgBrowser = WebBrowsers.Chrome;
+                        break;
+                    }
+                case "EDGE":
+                    {
+                        cfgBrowser = WebBrowsers.Edge;
+                        break;
+                    }
+                default:
+                    {
+                        throw new BrowserTypeException(String.Format("Browser {0} not supported", FrameworkConstants.configBrowser));
+                    }
+            }
+
+            return GetDriver(cfgBrowser);
+        }
     }
 
+}
+
     //browser Enum with the supported browser types
-    public enum webBrowsers
+    public enum WebBrowsers
     {
         Chrome,
         Firefox,
         Edge
     }
-}
+

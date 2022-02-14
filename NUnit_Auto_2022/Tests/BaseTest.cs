@@ -17,7 +17,7 @@ namespace NUnit_Auto_2022.Tests
         public void Setup()
         {
             //instantiate the browser using the Browser Factory class in Utilities
-            driver = Browser.GetDriver(webBrowsers.Edge);
+            driver = Browser.GetDriver();
         }
 
 

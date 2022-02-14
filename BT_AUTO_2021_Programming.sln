@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSTest_Auto_2022", "MSTest_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnit_Auto_2022", "XUnit_Auto_2022\XUnit_Auto_2022.csproj", "{DFD7EE8C-D240-47D2-8227-36617889FCB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Building", "Building\Building.csproj", "{C0651B7E-09EA-4CC5-A4F1-0ACD47C51206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Building", "Building\Building.csproj", "{C0651B7E-09EA-4CC5-A4F1-0ACD47C51206}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9FF6F84-FB06-4B82-A771-6730779B4CCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

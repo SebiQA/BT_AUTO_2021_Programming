@@ -9,6 +9,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using OpenQA.Selenium.Support.UI;
 
 namespace NUnit_Auto_2022.Tests
 {
@@ -31,7 +32,7 @@ namespace NUnit_Auto_2022.Tests
                     var values = line.Split(',');
                     if (index > 0)
                     {
-                        yield return new TestCaseData(values[0], values[1]);
+                        yield return new TestCaseData(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]);
                     }
                     index++;
                 }

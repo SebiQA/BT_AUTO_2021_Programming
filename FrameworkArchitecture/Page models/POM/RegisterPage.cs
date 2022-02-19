@@ -25,6 +25,12 @@ namespace NUnit_Auto_2022.PageModels.POM
         const string confirmPasswordRequirements = "div.form-group:nth-child(4) > div:nth-child(2) > small:nth-child(2)"; //css
         const string confirmPasswordError = "div.form-group:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"; //css
         const string someDetails = "div.form-group:nth-child(5) > div:nth-child(2)"; //css
+
+        internal void Registration(string username, string password, string passconfirm, string firstName, string lastName, string email, string dob, SelectElement nationality)
+        {
+            throw new NotImplementedException();
+        }
+
         const string title = "div.form-group:nth-child(6) > label:nth-child(1)"; //css
         const string titleInput = "form-check-input"; //class
         const string firstNameLabel = "div.form-group:nth-child(7) > label:nth-child(1)"; //css
@@ -53,7 +59,7 @@ namespace NUnit_Auto_2022.PageModels.POM
 
         public string CheckPage()
         {
-            return driver.FindElement(By.CssSelector(registerTextSelector)).Text;
+            return driver.FindElement(By.ClassName(registerTextSelector)).Text;
         }
 
         public void Registration(string user, string pass, string passConfirm, string firstname, string lastname, string email, string dob, string nationality)

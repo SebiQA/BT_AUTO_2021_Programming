@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualBasic.FileIO;
 using NPOI.XSSF.UserModel;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -243,6 +244,43 @@ namespace NUnit_Auto_2022
             }
         }
 
+        //metoda generare screenshot
+        public static MediaEntityModelProvider CaptureScreenShot(IWebDriver driver, string name)
+        {
+            var screenShot = ((ITakesScreenshot)driver).GetScreenshot().AsBase64EncodedString;
+            return MediaEntityBuilder.CreateScreenCaptureFromBase64String(screenShot, name).Build();
+        }
+
+        public static string ConvertDictionaryToQuery(Dictionary<string, string> queryParams)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string key in queryParams.Keys)
+            {
+                sb.Append(String.Format("&{0}={1}", key, queryParams[key]));
+            }
+            return sb.ToString();
+
+        }
+
+        public static List<Dictionary<string, string>> ConvertCsvToDictionary(string filePath)
+        {
+            var lines = File.ReadAllLines(filePath).Select(a => a.Split(','));
+            List<Dictionary<string, string>> dictionaryList = new List<Dictionary<string, string>>();
+            string[] header = lines.ElementAt(0).ToArray();
+            for (int i = 1; i < lines.Count(); i++)
+            {
+                var currentValues = lines.ElementAt(i).ToArray();
+                Dictionary<string, string> queryParams = new Dictionary<string, string>();
+                for (int j = 0; j < currentValues.Count(); j++)
+                {
+                    queryParams.Add(header[j], currentValues[j]);
+                }
+                dictionaryList.Add(queryParams);
+            }
+            return dictionaryList;
+        }
+
+
     }
-    
+
 }

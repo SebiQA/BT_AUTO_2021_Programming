@@ -140,7 +140,7 @@ namespace NUnit_Auto_2022.Tests
             //Map the DB table to EF model
             using (var context = new Other.CredentialsDbContext(conDetails))
             {
-                var credentials = context.credentialssf;
+                var credentials = context.credentialsSF;
                 foreach (var cred in credentials)
                 {
                     yield return new TestCaseData(cred.Username, cred.Password);
@@ -157,13 +157,16 @@ namespace NUnit_Auto_2022.Tests
         public void BasicAuth(string username, string password)
         {
             Console.WriteLine(url + "login");
-            driver.Navigate().GoToUrl(url + "login");
+            _driver.Navigate().GoToUrl(url + "login");
             
-            PageModels.POM.LoginPage lp = new PageModels.POM.LoginPage(driver);
+            PageModels.POM.LoginPage lp = new PageModels.POM.LoginPage(_driver);
             // This is beacuse we have 2 classes named LoginPage one on POM other on PageFactory
             // In real life framework you will have just one type of desigm pattern (POM/PF)
             Assert.AreEqual("Authentication", lp.CheckPage());
             lp.Login(username, password);
+            String contextName = TestContext.CurrentContext.Test.Name;
+            testName = contextName;
+            _test = _extent.CreateTest(contextName);
 
        
         }
@@ -190,8 +193,8 @@ namespace NUnit_Auto_2022.Tests
         //[Parallelizable(ParallelScope.Self)]
         public void BasicAuthPf([ValueSource("GetUsername")]string username, [ValueSource("GetPassword")] string password)
         {
-            driver.Navigate().GoToUrl(url + "login");
-            PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(driver);
+            _driver.Navigate().GoToUrl(url + "login");
+            PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(_driver);
             Assert.AreEqual("Authentication", lp.CheckPage());
             lp.Login(username, password);
 
